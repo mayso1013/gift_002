@@ -1,95 +1,60 @@
 <html>
-
 <head>
-
-<title>카카오톡 버튼있는 메시지 전송하기</title>
-
-<script id="javascript-sdk" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>카카오 링크 보내기</title>
+<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
-
 <body>
-
-<p><strong>아래 카카오톡 아이콘을 눌러 전송하세요</strong> By. Blackcats4567</p>
-
-<a id="kakao-link-btn" href="javascript:sendLink()">
-
-  <img
-
-    src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
-
-  />
-
-</a>
+    <input type="button" onClick="sendLinkCustom();" value="sendCustom"/>
+    <input type="button" onClick="sendLinkDefault();" value="sendDefault"/>
 
 <script type="text/javascript">
-
- Kakao.init('0b46a94560070052c5a88985d277e429');
-
-  function sendLink() {
-
-    Kakao.Link.sendDefault({
-
-      objectType: 'feed',
-
-      content: {
-
-        title: '선물과 메시지를 보냈습니다.',
-
-        description: '',
-
-        imageUrl:
-
-          'https://images.app.goo.gl/w31ektW72g8mPbN17',
-
-        link: {
-
-          mobileWebUrl: 'https://verycutecats.000webhostapp.com',
-
-          webUrl: 'https://verycutecats.000webhostapp.com',
-
-        },
-
-      },
-
-      social: {
-
-        likeCount: , //99999가 최대입니다
-
-        commentCount: , //99999가 최대입니다
-
-        sharedCount: , //99999가 최대입니다
-
-      },
-
-      buttons: [
-
-        {
-
-          title: '선물함으로 가기',
-
-          link: {
-
-            mobileWebUrl: 'https://verycutecats.000webhostapp.com',
-
-            webUrl: 'https://verycutecats.000webhostapp.com',
-
-          },
-
-        },
-
-      ],
-
-    })
-
-  }
-
+    function sendLinkCustom() { //CASE1. '사용자 정의 메세지' 보내기
+        Kakao.init('fa6bab2324b7c885bfdee15dadd43689'); //문자열 형태로 입력
+        Kakao.Link.sendCustom({
+            templateId: 76565 //숫자 형태로 입력
+        });
+    }
 </script>
 
-<!-- www.blackcats4567.com -->
-
-<!-- 이미지/버튼 클릭 시 주소는 Kakao Developers의 애플리케이션 > 플랫폼 > Web에 넣어야 클릭했을때 성공적으로 표시됩니다 -->
-
-  </body>
-
+<script>
+  function sendLinkDefault() { //CASE2. '기본 메세지' 보내기
+    Kakao.init('fa6bab2324b7c885bfdee15dadd43689'); //문자열 형태로 입력
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '딸기 치즈 케익',
+        description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+        imageUrl:
+          'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: 'https://developers.kakao.com',
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+      ],
+    })
+  }
+</script>
+</body>
 </html>
